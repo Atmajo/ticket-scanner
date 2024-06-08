@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 
-const page = () => {
+const Page = () => {
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -130,4 +130,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

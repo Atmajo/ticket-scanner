@@ -1,6 +1,6 @@
 import { NextResponse, NextRequest } from "next/server";
 import { connect } from "@/db/db";
-import { userSchema } from "@/schema/schema";
+import { adminSchema } from "@/schema/schema";
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 
@@ -10,11 +10,11 @@ export async function POST(req: NextRequest, res: NextResponse) {
   const updatedBody = { ...body, password: hashedPassword };
   await connect();
 
-  const User = mongoose.models.user || mongoose.model("user", userSchema);
+  const Admin = mongoose.models.admin || mongoose.model("Admin", adminSchema);
+  
+  const admin = new Admin(updatedBody);
+  admin.save();
 
-  const user = new User(updatedBody);
-  user.save();
-
-  console.log("User created");
-  return NextResponse.json({ message: "User Created" }, { status: 200 });
+  console.log("Admin created");
+  return NextResponse.json({ message: "Admin Created" }, { status: 200 });
 }

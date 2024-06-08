@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { v4 as uuid } from "uuid";
 
-const page = () => {
+const Page = () => {
   const [form, setForm] = useState({
     id: "",
     email: "",
@@ -117,4 +117,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

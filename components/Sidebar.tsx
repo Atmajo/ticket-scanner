@@ -8,13 +8,6 @@ import Image from "next/image";
 const Sidebar = ({ menu, setMenu }: { menu: boolean; setMenu: Function }) => {
   const pathname = usePathname();
   const router = useRouter();
-  const hasAccess = Cookies.get("user") as string;
-  
-  useEffect(() => {
-    if (!hasAccess) {
-      router.push("/sign-in");
-    }
-  }, [hasAccess]);
 
   const isActive = pathname === "/" || pathname === "/tickets";
 
@@ -57,21 +50,6 @@ const Sidebar = ({ menu, setMenu }: { menu: boolean; setMenu: Function }) => {
         >
           <h1>Users</h1>
         </Link>
-        <h1
-          onClick={() => {
-            Cookies.remove("user");
-            Cookies.remove("id");
-            router.push("/sign-in");
-          }}
-          className={cn(
-            "flex gap-3 items-center py-4 max-lg:px-4 justify-start max-lg:justify-center cursor-pointer",
-            {
-              "bg-nav-focus border-r-4 border-orange-600": isActive,
-            }
-          )}
-        >
-          Log Out
-        </h1>
       </div>
     </div>
   );

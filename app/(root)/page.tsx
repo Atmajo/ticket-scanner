@@ -11,7 +11,7 @@ import { Html5QrcodeScanner } from "html5-qrcode";
 
 export default function Home() {
   const { toast } = useToast();
-
+  
   const [loading, setLoading] = useState(false);
 
   const [scanResult, setScanResult] = useState<string | null>(null);
@@ -37,7 +37,7 @@ export default function Home() {
       console.error(error);
     }
   }, []);
-
+  
   return (
     <div className="flex flex-col justify-center items-center mx-auto min-h-screen">
       <h1>Scanning in Progress :</h1>
